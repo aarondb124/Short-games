@@ -1,0 +1,114 @@
+:root {
+  --border-style: 5px solid white;
+}
+
+body {
+  background-color: #000;
+  user-select: none;
+  color: white;
+  font-family: 'Quicksand';
+  font-size: 2vmax;
+  overflow-y: hidden;
+}
+
+main {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  grid-template-rows: 7fr 1fr;
+  grid-template-columns: 1fr 8fr;
+  grid-template-areas:
+    "board board"
+    "selector output";
+}
+
+#board {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  grid-area: board;
+  display: grid;
+  grid-auto-rows: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas:
+    "C0 C1 C2"
+    "C3 C4 C5"
+    "C6 C7 C8";
+}
+
+#C0,
+#C1,
+#C2 {
+  border-bottom: var(--border-style);
+}
+
+#C6,
+#C7,
+#C8 {
+  border-top: var(--border-style);
+}
+
+#C0,
+#C3,
+#C6 {
+  border-right: var(--border-style);
+}
+
+#C2,
+#C5,
+#C8 {
+  border-left: var(--border-style);
+}
+
+#selector {
+  position: relative;
+  grid-area: selector;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+}
+
+#output {
+  position: relative;
+  grid-area: output;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#icon {
+  width: 60%;
+  height: 60%;
+  filter: invert(1) drop-shadow(0px 0px 2px white);
+}
+
+.cell {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (orientation: landscape) {
+  main {
+    width: 70vh;
+    height: 80vh;
+  }
+
+  main {
+    transform: translate(-50%, calc(-50% * 6 / 7));
+  }
+}
+
+@media (orientation: portrait) {
+  main {
+    width: 70vw;
+    height: 80vw;
+  }
+
+  main {
+    transform: translate(-50%, calc(-50% * .75));
+  }
+}
